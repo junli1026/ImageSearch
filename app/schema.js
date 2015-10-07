@@ -25,3 +25,7 @@ var answerSchema = new Schema({
 var User = mongoose.model('User', userSchema);
 var Question = mongoose.model('Question', questionSchema);
 var Answer = mongoose.model('Answer', answerSchema);
+
+exports.User = User;
+exports.Question = Question;
+exports.Answer = Answer;
