@@ -1,20 +1,12 @@
-var users = [
-  { name: 'jun', email: 'xx@yy' },
-  { name: 'yang', email: 'xx@yy' }
-];
+var s = require('./schema');
 
 exports.list = function(req, res){
-  res.json({'users':users });
+  s.User.find(function (err, user) {
+     if(err) { // 404
+     
+     } else {
+       res.json(user);
+     }
+  });
 };
 
-exports.get = function(req, res, next){
-  var id = req.params.id;
-  req.user = users[id];
-  if (req.user) {
-    next();
-  } else {
-    var err = new Error('cannot find user ' + id);
-    err.status = 404;
-    next(err);
-  }
-};
